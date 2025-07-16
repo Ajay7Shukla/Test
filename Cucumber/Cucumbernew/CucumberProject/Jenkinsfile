@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         
-        stage('Run Tests') {
+        stage('RunTest') {
             steps {
                 sh './mvn clean install test -Dcucumber.options="--plugin json:target/cucumber-report.json"'
             }
