@@ -7,9 +7,9 @@ pipeline {
                 git url: 'https://github.com/example/cucumber-example.git', branch: 'main'
             }
         }
-        stage('Test') {
+        stage('Run Tests') {
             steps {
-                sh 'mvn clean install test -Dcucumber.options="--plugin json:target/cucumber-report.json"'
+                sh './mvn clean install test -Dcucumber.options="--plugin json:target/cucumber-report.json"'
             }
         }
         stage('Report') {
