@@ -2,31 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/example/cucumber-example.git', branch: 'main'
-            }
-        }
+        
         stage('Run Tests') {
             steps {
                 sh './mvn clean install test -Dcucumber.options="--plugin json:target/cucumber-report.json"'
             }
         }
-        stage('Report') {
-            steps {
-                cucumber(
-                  fileIncludePattern: 'target/cucumber-report.json',
-                  jsonReportDirectory: 'target'
-                )
-            }
-        }
-    }
-    post {
-        always {
-            cucumber(
-                fileIncludePattern: 'target/cucumber-report.json',
-                jsonReportDirectory: 'target'
-            )
-        }
-    }
+        
 }
