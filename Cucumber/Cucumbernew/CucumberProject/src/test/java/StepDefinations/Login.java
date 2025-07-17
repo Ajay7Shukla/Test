@@ -18,9 +18,12 @@ public class Login {
 	public void initialize_driver() {
 	    System.out.println("Enter initialize");
 		ChromeOptions options = new ChromeOptions();
+		// Set the path of ChromeDriver
+        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\ashukla1\\Desktop\\AjayCucumber\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 		options.addArguments("--remote-allow-origins=*");
 		options.addArguments("--ignore-certificate-errors");
 		options.addArguments("--ignore-ssl-errors=yes");
+		options.setAcceptInsecureCerts(true);
 		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
